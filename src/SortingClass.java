@@ -63,23 +63,54 @@ public class SortingClass {
     public void selectionSort() {
         int temp;
         for (int i = 0; i < n; i++) {
-            int min = i ;
+            int min = i;
             for (int j = i; j < n; j++) {
                 if (arr[j] < arr[min]) {
                     min = j;
                 }
             }
-            temp = arr[i] ;
-            arr[i] = arr[min] ;
+            temp = arr[i];
+            arr[i] = arr[min];
             arr[min] = temp;
 
         }
     }
 
-    //Method for quick sort
-    public void quickSort() {
-        //TODO
+    //This method will be used in quicksort
+    private int findPivotPlace(int startingPosition, int pivotIndex) {
+        int pivot = arr[pivotIndex]; //We will choose as pivot the last element of the array to make it simple.
+        int i = startingPosition -1;
+        int temp;
+        for (int j = startingPosition; j < pivotIndex; j++) {
+            if (arr[j] <= pivot){
+                i++;
+                temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        i++; //i is the new index of the pivot.
+        temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[i];
+        arr[i] = temp;
+        return i;
     }
+
+    //Method for quick sort
+    public void quickSort( int left, int right) {
+        if (left < right) {
+            int index = findPivotPlace(left, right);
+
+            quickSort(left, index-1);
+            quickSort(index+1, right);
+        }
+    }
+
+    //Overloading the method quick sort just so we can call it without parameters
+    public void quickSort(){
+        quickSort(0,n-1);
+    }
+
 
     public static void main(String[] args) {
         Scanner stdin = new Scanner(System.in);
@@ -133,6 +164,21 @@ public class SortingClass {
             sort.display();
         }
         System.out.println("The execution time of Selection sort is: " + executionTime);
+
+        //Quick sort
+        sort.fillRandom();
+        //To compute the execution time
+        start = System.nanoTime(); //Start time
+        sort.quickSort();
+        end = System.nanoTime(); //End time
+        executionTime = end - start;
+        //For testing purposes, we will print the array after sorting it if n is small
+        if (n <= 50) {
+            System.out.println("The array after sorting: ");
+            sort.display();
+        }
+        System.out.println("The execution time of quick sort is: " + executionTime);
+
     }
 
 }
