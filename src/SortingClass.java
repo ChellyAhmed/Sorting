@@ -47,7 +47,7 @@ public class SortingClass {
     //Method for Bubble sort
     public void bubbleSort() {
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - 1; j++) {
+            for (int j = 0; j < n - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
@@ -132,7 +132,7 @@ public class SortingClass {
             System.out.println("The array after sorting: ");
             sort.display();
         }
-        System.out.println("The execution time of Insertion sort is: " + executionTime);
+        System.out.println("The execution time of Insertion sort is: " + executionTime + " nanoseconds");
 
         //We should create another unsorted array for the next methods.
         //We will keep the same n.
@@ -149,7 +149,7 @@ public class SortingClass {
             System.out.println("The array after sorting: ");
             sort.display();
         }
-        System.out.println("The execution time of Bubble sort is: " + executionTime);
+        System.out.println("The execution time of Bubble sort is: " + executionTime + " nanoseconds");
 
         //Selection sort
         sort.fillRandom();
@@ -163,7 +163,7 @@ public class SortingClass {
             System.out.println("The array after sorting: ");
             sort.display();
         }
-        System.out.println("The execution time of Selection sort is: " + executionTime);
+        System.out.println("The execution time of Selection sort is: " + executionTime + " nanoseconds");
 
         //Quick sort
         sort.fillRandom();
@@ -177,7 +177,7 @@ public class SortingClass {
             System.out.println("The array after sorting: ");
             sort.display();
         }
-        System.out.println("The execution time of quick sort is: " + executionTime);
+        System.out.println("The execution time of quick sort is: " + executionTime + " nanoseconds");
 
     }
 
