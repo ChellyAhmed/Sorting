@@ -1,0 +1,1 @@
+This project contains a small comparison between the sorting algorithms
